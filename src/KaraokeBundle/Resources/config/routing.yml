@@ -1,0 +1,3 @@
+karaoke_homepage:
+    path:     /
+    defaults: { _controller: KaraokeBundle:Default:index }

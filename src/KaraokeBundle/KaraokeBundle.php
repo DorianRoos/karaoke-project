@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle;
+namespace KaraokeBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AppBundle extends Bundle
+class KaraokeBundle extends Bundle
 {
 }
