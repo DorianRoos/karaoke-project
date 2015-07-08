@@ -10,7 +10,7 @@ namespace KaraokeBundle\Model;
 
 use KaraokeBundle\Util\SplObjectStorageEnhanced;
 
-class Lines extends \SplObjectStorage {
+class Lines extends SplObjectStorageEnhanced {
     /**
      * {@inheritdoc}
      *

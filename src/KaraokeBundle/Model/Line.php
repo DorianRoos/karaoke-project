@@ -13,16 +13,75 @@ namespace KaraokeBundle\Model;
 
 class Line {
 
+    /**
+     * @var string
+     */
+    protected $id;
+
+    /**
+     * @var string
+     */
     protected $layer;
+
+    /**
+     * TODO
+     */
     protected $start;
     protected $end;
+
+    /**
+     * @var string
+     */
     protected $style;
+
+    /**
+     * @var string
+     */
     protected $name;
+
+    /**
+     * @var string
+     */
     protected $marginL;
+
+    /**
+     * @var string
+     */
     protected $marginR;
+
+    /**
+     * @var string
+     */
     protected $marginV;
+
+    /**
+     * @var string
+     */
     protected $effect;
 
+    /**
+     * @var string
+     */
+    protected $text;
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId($id)
+    {
+        if (0 >= mb_strlen($id)) {
+            throw new \InvalidArgumentException('You have to provide a string of at least one character');
+        }
+        $this->id = $id;
+    }
     /**
      * @return string
      */
@@ -36,6 +95,10 @@ class Line {
      */
     public function setLayer($layer)
     {
+        if (0 >= mb_strlen($layer)) {
+            throw new \InvalidArgumentException('You have to provide a string of at least one character');
+        }
+
         $this->layer = $layer;
     }
 
@@ -84,6 +147,10 @@ class Line {
      */
     public function setStyle($style)
     {
+        if (0 >= mb_strlen($style)) {
+            throw new \InvalidArgumentException('You have to provide a string of at least one character');
+        }
+
         $this->style = $style;
     }
 
@@ -100,6 +167,10 @@ class Line {
      */
     public function setName($name)
     {
+        if (0 >= mb_strlen($name)) {
+            throw new \InvalidArgumentException('You have to provide a string of at least one character');
+        }
+
         $this->name = $name;
     }
 
@@ -116,6 +187,10 @@ class Line {
      */
     public function setMarginL($marginL)
     {
+        if (0 >= mb_strlen($marginL)) {
+            throw new \InvalidArgumentException('You have to provide a string of at least one character');
+        }
+
         $this->marginL = $marginL;
     }
 
@@ -132,6 +207,10 @@ class Line {
      */
     public function setMarginR($marginR)
     {
+        if (0 >= mb_strlen($marginR)) {
+            throw new \InvalidArgumentException('You have to provide a string of at least one character');
+        }
+
         $this->marginR = $marginR;
     }
 
@@ -148,6 +227,10 @@ class Line {
      */
     public function setMarginV($marginV)
     {
+        if (0 >= mb_strlen($marginV)) {
+            throw new \InvalidArgumentException('You have to provide a string of at least one character');
+        }
+
         $this->marginV = $marginV;
     }
 
@@ -164,7 +247,31 @@ class Line {
      */
     public function setEffect($effect)
     {
+        if (0 >= mb_strlen($effect)) {
+            throw new \InvalidArgumentException('You have to provide a string of at least one character');
+        }
+
         $this->effect = $effect;
+    }
+
+    /**
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->text;
+    }
+
+    /**
+     * @param string $text
+     */
+    public function setText($text)
+    {
+        if (0 >= mb_strlen($text)) {
+            throw new \InvalidArgumentException('You have to provide a string of at least one character');
+        }
+
+        $this->text = $text;
     }
 
 }

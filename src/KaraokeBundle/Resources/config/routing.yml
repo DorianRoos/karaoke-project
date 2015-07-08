@@ -1,3 +1,7 @@
 karaoke_homepage:
     path:     /
-    defaults: { _controller: KaraokeBundle:Default:index }
+    defaults: { _controller: KaraokeBundle:Karaoke:index }
+
+karaoke_display:
+    path:     /display.htm
+    defaults: { _controller: KaraokeBundle:Karaoke:display }
