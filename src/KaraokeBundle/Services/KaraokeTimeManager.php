@@ -10,7 +10,8 @@ namespace KaraokeBundle\Services;
 
 use KaraokeBundle\Model\Lines,
     KaraokeBundle\Model\Line,
-    KaraokeBundle\Model\Karaoke;
+    KaraokeBundle\Model\Karaoke,
+    KaraokeBundle\Model\KaraokeTime;
 
 class KaraokeTimeManager {
 
@@ -44,15 +45,40 @@ class KaraokeTimeManager {
         $oLines->rewind();
         $firstTime = $oLines->current()->getStart();
 
-        if($firstTime > $this->newTimeStart) {
-            $interval = $this->newTimeStart->diff($firstTime);
-        } else {
-            $interval = $firstTime->diff($this->newTimeStart);
-        }
-
         var_dump($this->newTimeStart); print '<br>'; var_dump($firstTime);
-        print '<br>';
-        var_dump($oLines->current()->getStart()->add($interval));
+
         return $oKaraoke;
+    }
+
+    /**
+     * @param KaraokeTime $oCurrentTime
+     * @param KaraokeTime $oAddTime
+     * @return KaraokeTime
+     */
+    public function addTime($oCurrentTime, $oAddTime){
+
+        $temp_milliseconde = $oCurrentTime->getMilliseconde() + $oAddTime->getMilliseconde();
+        if($temp_milliseconde >= 100){
+            $temp_milliseconde = $temp_milliseconde - 100;
+            $oCurrentTime->setSeconde($oCurrentTime->getSeconde() + 1);
+        }
+        $oCurrentTime->setMilliseconde($temp_milliseconde);
+
+        $temp_seconde = $current['seconde'] + $add['seconde'];
+        if($temp_seconde >= 60){
+            $temp_seconde = $temp_seconde - 60;
+            $current['minute'] += 1;
+        }
+        $current['seconde'] = $temp_seconde;
+        $temp_minute = $current['minute'] + $add['minute'];
+        if($temp_minute >= 60){
+            $temp_minute = $temp_minute - 60;
+            $current['heure'] += 1;
+        }
+        $current['minute'] = $temp_minute;
+        $temp_heure = $current['heure'] + $add['heure'];
+        $current['heure'] = $temp_heure;
+
+        return $oCurrentTime;
     }
 }

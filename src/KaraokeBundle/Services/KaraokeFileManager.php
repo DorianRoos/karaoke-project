@@ -10,7 +10,8 @@ namespace KaraokeBundle\Services;
 
 use KaraokeBundle\Model\Lines,
     KaraokeBundle\Model\Line,
-    KaraokeBundle\Model\Karaoke;
+    KaraokeBundle\Model\Karaoke,
+    KaraokeBundle\Model\KaraokeTime;
 
 class KaraokeFileManager {
 
@@ -79,8 +80,8 @@ class KaraokeFileManager {
 
             $line->setId($id++);
             ( 0 == mb_strlen($arrayData[0]) ) ?: $line->setLayer($arrayData[0]);
-            ( 0 == mb_strlen($arrayData[1]) ) ?: $line->setStart(new \DateTime($arrayData[1]));
-            ( 0 == mb_strlen($arrayData[2]) ) ?: $line->setEnd(new \DateTime($arrayData[2]));
+            ( 0 == mb_strlen($arrayData[1]) ) ?: $line->setStart(new KaraokeTime($arrayData[1]));
+            ( 0 == mb_strlen($arrayData[2]) ) ?: $line->setEnd(new KaraokeTime($arrayData[2]));
             ( 0 == mb_strlen($arrayData[3]) ) ?: $line->setStyle($arrayData[3]);
             ( 0 == mb_strlen($arrayData[4]) ) ?: $line->setName($arrayData[4]);
             ( 0 == mb_strlen($arrayData[5]) ) ?: $line->setMarginL($arrayData[5]);

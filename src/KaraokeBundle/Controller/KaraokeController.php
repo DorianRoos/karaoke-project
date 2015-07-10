@@ -8,8 +8,9 @@
 
 namespace KaraokeBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller,
+    Symfony\Component\HttpFoundation\Request,
+    KaraokeBundle\Model\KaraokeTime;
 
 class KaraokeController extends Controller {
 
@@ -52,7 +53,7 @@ class KaraokeController extends Controller {
         $new_start = $formTime['heure'].':'.$formTime['minute'].':'.$formTime['seconde'].'.'.$formTime['milliseconde'];
 
         /** @var \DateTime $oNewTimeStart */
-        $oNewTimeStart = new \DateTime($new_start);
+        $oNewTimeStart = new KaraokeTime($new_start);
         
         /** @var \KaraokeBundle\Services\KaraokeFileManager $oKaraokeFileManager */
         $oKaraokeFileManager = $this->get('karaoke_file_manager');
